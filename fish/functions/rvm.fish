@@ -1,0 +1,1 @@
+/Users/jporter/.config/fisherman/rvm/functions/rvm.fish

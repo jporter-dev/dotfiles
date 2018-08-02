@@ -1,0 +1,1 @@
+/Users/jporter/.config/fisherman/nvm/functions/npm.fish
