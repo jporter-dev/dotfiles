@@ -15,3 +15,7 @@
 ### Mac only
 
 - Homebrew
+
+## Custom Settings
+
+- VSCode Settings Sync: https://gist.github.com/joshporter1/ae52df7041e937f7637a040c00092f53
