@@ -77,10 +77,10 @@ for f in ./home/fish/*; do
   \cp -Rf -v $f $HOME/.config/fish
 done
 
-# install fisher stuff
+# install fisher stuff if installed packages are less than fishfile
 echo "Installing fisher packages..."
-for f in $( cat ./home/fish/fishfile ); do
-  fish -c fisher add $f
-done
-
-\curl -L --create-dirs -o ~/.config/fish/functions/rvm.fish https://raw.github.com/lunks/fish-nuggets/master/functions/rvm.fish
+if (( $(fish -c 'fisher ls -l | wc -l') < $(cat ./home/fish/fishfile | wc -l) )) ; then
+  for f in $( cat ./home/fish/fishfile ); do
+    fish -c 'fisher add $f'
+  done
+fi
