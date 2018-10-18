@@ -81,6 +81,6 @@ done
 echo "Installing fisher packages..."
 if (( $(fish -c 'fisher ls -l | wc -l') < $(cat ./home/fish/fishfile | wc -l) )) ; then
   for f in $( cat ./home/fish/fishfile ); do
-    fish -c 'fisher add $f'
+    fish -c 'fisher install $f'
   done
 fi
