@@ -54,6 +54,16 @@ else
   echo "rvm already installed."
 fi
 
+#rvm
+echo "Installing docker..."
+if which -s docker != 0 ; then
+  brew cask install docker
+  mkdir ~/.config/fish/completions
+  \curl https://raw.githubusercontent.com/docker/cli/master/contrib/completion/fish/docker.fish > ~/.config/fish/completions/docker.fish
+else
+  echo "docker already installed."
+fi
+
 echo "Installing JDK..."
 if java -version ; then
   echo "Java already installed."
