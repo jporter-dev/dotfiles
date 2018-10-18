@@ -1,6 +1,13 @@
 set default_user "jporter"
 set default_machine "jporter-mbp"
 
+# fisher stuff
+if not functions -q fisher
+    set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+    curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
+    fish -c fisher
+end
+
 source ~/.config/fish/aliases.fish
 source ~/.config/fish/functions.fish
 
@@ -15,4 +22,4 @@ set PATH $PATH $GOPATH/bin
 set -x JAVA_HOME (/usr/libexec/java_home)
 set -x ANDROID_HOME /usr/local/share/android-sdk
 
-rvm default
+# rvm default

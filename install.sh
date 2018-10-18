@@ -54,9 +54,33 @@ else
   echo "rvm already installed."
 fi
 
+echo "Installing JDK..."
+if java -version ; then
+  echo "Java already installed."
+else
+  brew tap caskroom/cask
+  brew cask install java
+fi
+
+# copying home folder dotfiles
+echo "Copying home folder dotfiles"
 for f in ./home/.[^.]*; do
-  echo "Moving $f -> $HOME"
   cp -v $f $HOME
 done
 
-echo "Manually move over contents of fish to ~/.config"
+
+# copying fish config
+echo "Copying fish config"
+rm -rf $HOME/.config/fish
+mkdir $HOME/.config/fish
+for f in ./home/fish/*; do
+  \cp -Rf -v $f $HOME/.config/fish
+done
+
+# install fisher stuff
+echo "Installing fisher packages..."
+for f in $( cat ./home/fish/fishfile ); do
+  fish -c fisher add $f
+done
+
+\curl -L --create-dirs -o ~/.config/fish/functions/rvm.fish https://raw.github.com/lunks/fish-nuggets/master/functions/rvm.fish
