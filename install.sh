@@ -78,7 +78,6 @@ for f in ./home/.[^.]*; do
   cp -v $f $HOME
 done
 
-
 # copying fish config
 echo "Copying fish config"
 rm -rf $HOME/.config/fish
@@ -94,3 +93,5 @@ if (( $(fish -c 'fisher ls -l | wc -l') < $(cat ./home/fish/fishfile | wc -l) ))
     fish -c 'fisher install $f'
   done
 fi
+
+xcode-select --install

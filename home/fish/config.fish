@@ -22,4 +22,4 @@ set PATH $PATH $GOPATH/bin
 set -x JAVA_HOME (/usr/libexec/java_home)
 set -x ANDROID_HOME /usr/local/share/android-sdk
 
-# rvm default
+rvm default
