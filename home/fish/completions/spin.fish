@@ -1,1 +1,0 @@
-/Users/jporter/.config/fisherman/spin/completions/spin.fish

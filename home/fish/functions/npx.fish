@@ -1,1 +1,0 @@
-/Users/jporter/.config/fisherman/nvm/functions/npx.fish
