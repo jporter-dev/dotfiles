@@ -1,4 +1,10 @@
 # Shell aliases
+set -o autocd
+alias c="clear"
+alias h="history"
+alias j="jobs"
+alias p="pwd"
+alias s="source ~/.zshrc"
 alias cat="bat --style=plain"
 alias ls="eza"
 alias ll="ls -lag"
@@ -59,7 +65,10 @@ alias gsts="git stash save"
 
 # Environment variables
 export EDITOR="nvim"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home"
+export CPPFLAGS="-I/opt/homebrew/opt/openjdk@11/include"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
 
 # macOS specific configurations
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -91,3 +100,11 @@ fi
 if [ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
   source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
+
+autoload -Uz +X compinit && compinit
+
+## case insensitive path-completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' menu select
+zstyle ':completion:*' completer _complete _ignored _approximate
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
